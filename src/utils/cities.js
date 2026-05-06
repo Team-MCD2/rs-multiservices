@@ -27,3 +27,5 @@ export const cities = [
   { slug: 'saint-jean', name: 'Saint-Jean' },
   { slug: 'quint-fonsegrives', name: 'Quint-Fonsegrives' }
 ];
+
+export const defaultCity = 'toulouse';

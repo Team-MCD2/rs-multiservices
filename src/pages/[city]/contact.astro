@@ -1,6 +1,6 @@
 ---
-import { cities } from '../../data/cities';
 import ContactTemplate from '../../layouts/templates/ContactTemplate.astro';
+import { cities } from '../../utils/cities';
 
 export function getStaticPaths() {
   return cities.map(city => ({
@@ -13,4 +13,4 @@ const { city } = Astro.params;
 const { name } = Astro.props;
 ---
 
-<ContactTemplate cityName={name} citySlug={city} />
+<ContactTemplate city={city} cityName={name} />

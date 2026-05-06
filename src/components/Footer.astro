@@ -1,40 +1,28 @@
 ---
-import { cities } from '../data/cities';
-
-const { pathname } = Astro.url;
-const segments = pathname.split('/').filter(Boolean);
-const potentialCity = segments[0];
-const isCityPath = cities.some(c => c.slug === potentialCity);
-const currentCitySlug = isCityPath ? potentialCity : '';
-
-const getLink = (path: string) => {
-  if (!currentCitySlug) return path;
-  if (path === '/') return `/${currentCitySlug}`;
-  const finalPath = path === '/projects' ? '/realisations' : path;
-  return `/${currentCitySlug}${finalPath}`;
-};
+const { city = "toulouse" } = Astro.params;
+const cityPrefix = city ? `/${city}` : "/toulouse";
 ---
 
 <footer class="site-footer footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <a href={getLink("/")} class="brand">
+      <a href={`${cityPrefix}/`} class="brand">
         <img src="/logors.png" alt="Logo R&S Multi-Services" style="height:54px; border-radius:8px;">
         <span class="brand-text">
           <strong>RS Multi-Services</strong>
-          <span>Toulouse · 7j/7</span>
+          <span style="text-transform: capitalize;">{city || "Toulouse"} · 7j/7</span>
         </span>
       </a>
-      <p>Bricolage, entretien d'espaces verts, nettoyage et enlèvement d'encombrants. Une solution multi-services pour particuliers et professionnels à Toulouse et 50 km autour.</p>
+      <p>Bricolage, entretien d'espaces verts, nettoyage et enlèvement d'encombrants. Une solution multi-services pour particuliers et professionnels à {city || "Toulouse"} et 50 km autour.</p>
     </div>
     <div>
       <h4>Liens rapides</h4>
       <ul>
-        <li><a href={getLink("/")}>Accueil</a></li>
-        <li><a href={getLink("/about")}>À propos</a></li>
-        <li><a href={getLink("/services")}>Services</a></li>
-        <li><a href={getLink("/realisations")}>Réalisations</a></li>
-        <li><a href={getLink("/contact")}>Contact</a></li>
+        <li><a href={`${cityPrefix}/`}>Accueil</a></li>
+        <li><a href={`${cityPrefix}/about`}>À propos</a></li>
+        <li><a href={`${cityPrefix}/services`}>Services</a></li>
+        <li><a href={`${cityPrefix}/realisations`}>Réalisations</a></li>
+        <li><a href={`${cityPrefix}/contact`}>Contact</a></li>
         <li><a href="/mentions-legales">Mentions légales</a></li>
         <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
       </ul>
@@ -54,7 +42,7 @@ const getLink = (path: string) => {
       <ul class="footer-contact">
         <li><i class="fa-solid fa-phone"></i> <a href="tel:+33619696812">06 19 69 68 12</a></li>
         <li><i class="fa-solid fa-envelope"></i> <a href="mailto:raymond.spire31@gmail.com">raymond.spire31@gmail.com</a></li>
-        <li><i class="fa-solid fa-location-dot"></i> Pechbonnieu (31140) <br>Toulouse + 50 km autour</li>
+        <li><i class="fa-solid fa-location-dot"></i> <span style="text-transform: capitalize;">{city || "Pechbonnieu (31140)"}</span> <br>Toulouse + 50 km autour</li>
         <li><i class="fa-solid fa-clock"></i> 7j/7 · 8h00 - 19h00</li>
       </ul>
     </div>

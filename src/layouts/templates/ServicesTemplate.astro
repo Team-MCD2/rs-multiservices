@@ -1,39 +1,40 @@
 ---
 import BaseLayout from '../BaseLayout.astro';
+import { cities } from '../../utils/cities';
 
 interface Props {
-  cityName?: string;
-  citySlug?: string;
+  city: string;
+  cityName: string;
 }
 
-const { cityName = "{displayCity}", citySlug = "" } = Astro.props;
-const displayCity = cityName;
-const canonicalUrl = citySlug ? `{canonicalUrl}${citySlug}/services` : "{canonicalUrl}services";
+const { city, cityName } = Astro.props;
 ---
 
 <BaseLayout
-  title={`Nos services — Bricolage, Jardinage, Nettoyage, Débarras | RS Multi-Services ${displayCity}`}
-  description={`Découvrez tous les services RS Multi-Services à ${displayCity} : petit bricolage, tonte, taille, élagage, nettoyage maison/bureau/chantier, vide-maison, débarras. Devis gratuit 7j/7.`}
-  canonical={canonicalUrl}
+  title={`Services Bricolage, Jardinage, Nettoyage à ${cityName} — RS Multi-Services`}
+  description={`Découvrez tous les services RS Multi-Services à ${cityName} : petit bricolage, tonte, taille, élagage, nettoyage, débarras. Devis gratuit à ${cityName}.`}
+  canonical={`https://rsmultiservices.fr/${city}/services`}
 >
   <Fragment slot="head">
-    <script type="application/ld+json">
-    {
+    <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "{canonicalUrl}" },
-        { "@type": "ListItem", "position": 2, "name": "Services", "item": "{canonicalUrl}services" }
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": `https://rsmultiservices.fr/${city}/` },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": `https://rsmultiservices.fr/${city}/services` }
       ]
-    }
-    </script>
+    })} />
   </Fragment>
 
   <section class="page-header" style="background-image: url('/assets/bg-garden.png');">
     <div class="container">
-      <h1>Nos services multi-services à {displayCity}</h1>
-      <p>Une seule équipe, tous vos besoins : bricolage, espaces verts, nettoyage et débarras.</p>
-      <nav class="breadcrumbs" aria-label="Fil d'ariane"><a href="/">Accueil</a><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i><span>Services</span></nav>
+      <h1>Nos services multi-services à {cityName}</h1>
+      <p>Une seule équipe pour tous vos besoins à {cityName} : bricolage, espaces verts, nettoyage et débarras.</p>
+      <nav class="breadcrumbs" aria-label="Fil d'ariane">
+        <a href={`/${city}/`}>Accueil</a>
+        <i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i>
+        <span>Services</span>
+      </nav>
     </div>
   </section>
 
@@ -43,19 +44,17 @@ const canonicalUrl = citySlug ? `{canonicalUrl}${citySlug}/services` : "{canonic
       <div class="service-block reveal">
         <div>
           <span class="label">Service 01</span>
-          <h2>Petit bricolage</h2>
-          <p>Tous ces petits travaux qui s'accumulent à la maison ? On s'en occupe en une seule visite. Réparations, fixations, montages, ajustements : nous intervenons rapidement avec le bon matériel.</p>
+          <h2>Petit bricolage à {cityName}</h2>
+          <p>Tous ces petits travaux qui s'accumulent à {cityName} ? On s'en occupe en une seule visite. Réparations, fixations, montages, ajustements.</p>
           <ul>
             <li>Pose d'étagères, tringles, tableaux</li>
             <li>Montage de meubles en kit</li>
             <li>Rebouchage de trous & retouches peinture</li>
-            <li>Petits travaux d'électricité (interrupteur, prise…)</li>
-            <li>Fixation et perçage</li>
-            <li>Pose et entretien serrurerie</li>
+            <li>Petits travaux d'électricité</li>
           </ul>
-          <a href="/contact?service=bricolage" class="btn btn-primary"><i class="fa-solid fa-wrench"></i> Demander un devis</a>
+          <a href={`/${city}/contact?service=bricolage`} class="btn btn-primary"><i class="fa-solid fa-wrench"></i> Devis bricolage</a>
         </div>
-        <img src="/assets/service-bricolage.png" alt="Petit bricolage et réparations à domicile">
+        <img src="/assets/service-bricolage.png" alt={`Petit bricolage à ${cityName}`}>
       </div>
     </div>
   </section>
@@ -66,21 +65,17 @@ const canonicalUrl = citySlug ? `{canonicalUrl}${citySlug}/services` : "{canonic
       <div class="service-block reverse reveal">
         <div>
           <span class="label">Service 02</span>
-          <h2>Entretien d'espaces verts</h2>
-          <p>De la simple tonte à l'aménagement complet de votre jardin : équipé en motoculteur, débroussailleuse et outils d'élagage, nous redonnons vie à vos extérieurs.</p>
+          <h2>Entretien d'espaces verts à {cityName}</h2>
+          <p>De la simple tonte à l'aménagement complet de votre jardin à {cityName} : équipé pour tout type de terrain.</p>
           <ul>
-            <li>Tonte de pelouse</li>
-            <li>Débroussaillage</li>
-            <li>Coupe d'herbe</li>
+            <li>Tonte de pelouse & débroussaillage</li>
             <li>Taille de haies & arbustes</li>
             <li>Élagage et coupe d'arbres</li>
-            <li>Passage de motoculteur</li>
-            <li>Aménagement de terrain</li>
-            <li>Pose de clôture / grillage / brise-vue</li>
+            <li>Pose de clôture / brise-vue</li>
           </ul>
-          <a href="/contact?service=jardinage" class="btn btn-primary"><i class="fa-solid fa-leaf"></i> Demander un devis</a>
+          <a href={`/${city}/contact?service=jardinage`} class="btn btn-primary"><i class="fa-solid fa-leaf"></i> Devis jardin</a>
         </div>
-        <img src="/assets/service-jardinage.png" alt="Entretien d'espace vert à {displayCity}">
+        <img src="/assets/service-jardinage.png" alt={`Entretien jardin à ${cityName}`}>
       </div>
     </div>
   </section>
@@ -91,42 +86,17 @@ const canonicalUrl = citySlug ? `{canonicalUrl}${citySlug}/services` : "{canonic
       <div class="service-block reveal">
         <div>
           <span class="label">Service 03</span>
-          <h2>Nettoyage intérieur / extérieur</h2>
-          <p>Maison, bureau, locaux professionnels ou fin de chantier : nous nettoyons en profondeur, avec produits adaptés et soin du détail.</p>
+          <h2>Nettoyage à {cityName}</h2>
+          <p>Maison, bureau, locaux professionnels ou fin de chantier à {cityName} : nous nettoyons en profondeur.</p>
           <ul>
             <li>Nettoyage maison & appartement</li>
             <li>Bureaux & espaces de travail</li>
             <li>Nettoyage de fin de chantier</li>
-            <li>Vitres et surfaces vitrées</li>
             <li>Terrasses, allées, façades</li>
-            <li>Locaux professionnels</li>
           </ul>
-          <a href="/contact?service=nettoyage" class="btn btn-primary"><i class="fa-solid fa-spray-can-sparkles"></i> Demander un devis</a>
+          <a href={`/${city}/contact?service=nettoyage`} class="btn btn-primary"><i class="fa-solid fa-spray-can-sparkles"></i> Devis nettoyage</a>
         </div>
-        <img src="/assets/service-nettoyage.png" alt="Nettoyage professionnel et résidentiel">
-      </div>
-    </div>
-  </section>
-
-  <!-- Bloc 4 : Encombrants -->
-  <section id="encombrants" style="background: var(--rs-gradient-soft);">
-    <div class="container">
-      <div class="service-block reverse reveal">
-        <div>
-          <span class="label">Service 04</span>
-          <h2>Enlèvement d'encombrants & déménagement</h2>
-          <p>Vide-maison, débarras de cave ou de grenier, locaux professionnels à libérer ? On charge, on évacue et on laisse l'espace propre. Possibilité d'aide au déménagement.</p>
-          <ul>
-            <li>Vide maison complet</li>
-            <li>Débarras cave, grenier, garage</li>
-            <li>Locaux professionnels</li>
-            <li>Évacuation gravats & déchets verts</li>
-            <li>Aide au déménagement</li>
-            <li>Tri & recyclage</li>
-          </ul>
-          <a href="/contact?service=encombrants" class="btn btn-primary"><i class="fa-solid fa-truck-arrow-right"></i> Demander un devis</a>
-        </div>
-        <img src="/assets/service-encombrants.png" alt="Enlèvement d'encombrants et débarras">
+        <img src="/assets/service-nettoyage.png" alt={`Nettoyage à ${cityName}`}>
       </div>
     </div>
   </section>
@@ -134,14 +104,12 @@ const canonicalUrl = citySlug ? `{canonicalUrl}${citySlug}/services` : "{canonic
   <!-- Tarifs -->
   <section>
     <div class="container">
-      <div class="text-center reveal">
-        <span class="section-eyebrow">Tarifs</span>
-        <h2 class="section-title mx-auto">Un devis personnalisé, gratuit et sans engagement</h2>
-        <p class="section-lead mx-auto">Nos tarifs sont calculés en fonction du travail à effectuer. Décrivez-nous votre besoin par téléphone ou via le formulaire — nous revenons vers vous très vite avec une estimation claire.</p>
-      </div>
-      <div class="text-center reveal">
-        <a href="/contact" class="btn btn-primary btn-lg"><i class="fa-solid fa-paper-plane"></i> Obtenir mon devis gratuit</a>
-        <a href="tel:+33619696812" class="btn btn-outline btn-lg" style="margin-left:8px"><i class="fa-solid fa-phone"></i> Appeler maintenant</a>
+      <div class="cta-banner reveal">
+        <div><h2>Besoin d'un devis à {cityName} ?</h2><p>Réponse en moins de 7 minutes.</p></div>
+        <div class="actions">
+          <a href={`/${city}/contact`} class="btn btn-primary btn-lg"><i class="fa-solid fa-paper-plane"></i> Devis gratuit</a>
+          <a href="tel:+33619696812" class="btn btn-ghost btn-lg"><i class="fa-solid fa-phone"></i> 06 19 69 68 12</a>
+        </div>
       </div>
     </div>
   </section>

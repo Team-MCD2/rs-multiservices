@@ -1,37 +1,23 @@
 ---
-import { cities } from '../data/cities';
-
-const { pathname } = Astro.url;
-// Détecter si on est dans une sous-page de ville (ex: /colomiers/...)
-const segments = pathname.split('/').filter(Boolean);
-const potentialCity = segments[0];
-const isCityPath = cities.some(c => c.slug === potentialCity);
-const currentCitySlug = isCityPath ? potentialCity : '';
-
-const getLink = (path: string) => {
-  if (!currentCitySlug) return path;
-  if (path === '/') return `/${currentCitySlug}`;
-  // Gérer la redirection de /projects vers /realisations si nécessaire
-  const finalPath = path === '/projects' ? '/realisations' : path;
-  return `/${currentCitySlug}${finalPath}`;
-};
+const { city = "toulouse" } = Astro.params;
+const cityPrefix = city ? `/${city}` : "/toulouse";
 ---
 
 <header class="site-header">
   <div class="container nav">
-    <a href={getLink("/")} class="brand" aria-label="RS Multi-Services - Accueil">
+    <a href={`${cityPrefix}/`} class="brand" aria-label="RS Multi-Services - Accueil">
       <img src="/logors.png" alt="Logo R&S Multi-Services" />
       <span class="brand-text">
         <strong>RS Multi-Services</strong>
-        <span>Toulouse · 7j/7</span>
+        <span style="text-transform: capitalize;">{city || "Toulouse"} · 7j/7</span>
       </span>
     </a>
     <ul class="nav-menu" id="primary-nav">
-      <li><a href={getLink("/")}>Accueil</a></li>
-      <li><a href={getLink("/about")}>À propos</a></li>
-      <li><a href={getLink("/services")}>Services</a></li>
-      <li><a href={getLink("/realisations")}>Réalisations</a></li>
-      <li><a href={getLink("/contact")}>Contact</a></li>
+      <li><a href={`${cityPrefix}/`}>Accueil</a></li>
+      <li><a href={`${cityPrefix}/about`}>À propos</a></li>
+      <li><a href={`${cityPrefix}/services`}>Services</a></li>
+      <li><a href={`${cityPrefix}/realisations`}>Réalisations</a></li>
+      <li><a href={`${cityPrefix}/contact`}>Contact</a></li>
     </ul>
     <div class="nav-actions">
       <a class="nav-tel" href="tel:+33619696812"><i class="fa-solid fa-phone"></i> 06 19 69 68 12</a>
@@ -39,7 +25,7 @@ const getLink = (path: string) => {
         <i class="fa-solid fa-moon icon-moon" aria-hidden="true"></i>
         <i class="fa-solid fa-sun icon-sun" aria-hidden="true"></i>
       </button>
-      <a href={getLink("/contact")} class="btn btn-primary">Devis gratuit</a>
+      <a href={`${cityPrefix}/contact`} class="btn btn-primary">Devis gratuit</a>
       <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-nav">
         <i class="fa-solid fa-bars"></i>
       </button>
