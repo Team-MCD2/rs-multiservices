@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Réalisations — RS Multi-Services Toulouse | Galerie de chantiers"
+  description="Découvrez les réalisations RS Multi-Services à Toulouse : tranchée à outils manuels, réfection de cabane, pose de brise-vue, taille de haies, débroussaillage… Avant/après et chantiers récents."
+  canonical="https://rsmultiservices.fr/projects"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://rsmultiservices.fr/" },
+        { "@type": "ListItem", "position": 2, "name": "Réalisations", "item": "https://rsmultiservices.fr/projects" }
+      ]
+    }
+    </script>
+  </Fragment>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Nos réalisations</h1>
+      <p>Quelques exemples de chantiers récents réalisés à Toulouse et dans son agglomération.</p>
+      <nav class="breadcrumbs" aria-label="Fil d'ariane"><a href="/">Accueil</a><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i><span>Réalisations</span></nav>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="projects-grid">
+        <a class="project-card reveal" data-lightbox="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&w=1600&q=80">
+          <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&w=900&q=80" alt="Tranchée de 30 mètres creusée à outils manuels">
+          <div class="overlay"><div><span>Terrassement</span><h4>Tranchée 30 m à outils manuels</h4></div></div>
+        </a>
+        <a class="project-card reveal" data-lightbox="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1600&q=80">
+          <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=900&q=80" alt="Cabane de jardin avec toit refait à neuf">
+          <div class="overlay"><div><span>Bricolage</span><h4>Réfection toit de cabane</h4></div></div>
+        </a>
+        <a class="project-card reveal" data-lightbox="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1600&q=80">
+          <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=900&q=80" alt="Brise-vue en bois posé en bordure de jardin">
+          <div class="overlay"><div><span>Aménagement</span><h4>Pose d'un brise-vue</h4></div></div>
+        </a>
+        <a class="project-card reveal" data-lightbox="https://images.unsplash.com/photo-1599629954294-14df9ec8bc03?auto=format&fit=crop&w=1600&q=80">
+          <img src="https://images.unsplash.com/photo-1599629954294-14df9ec8bc03?auto=format&fit=crop&w=900&q=80" alt="Tonte de pelouse réalisée par RS Multi-Services">
+          <div class="overlay"><div><span>Espaces verts</span><h4>Tonte & débroussaillage</h4></div></div>
+        </a>
+        <a class="project-card reveal" data-lightbox="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?auto=format&fit=crop&w=1600&q=80">
+          <img src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?auto=format&fit=crop&w=900&q=80" alt="Taille d'une haie de jardin">
+          <div class="overlay"><div><span>Espaces verts</span><h4>Taille de haies</h4></div></div>
+        </a>
+        <a class="project-card reveal" data-lightbox="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1600&q=80">
+          <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=900&q=80" alt="Aménagement complet d'un jardin">
+          <div class="overlay"><div><span>Aménagement</span><h4>Remise en état d'un jardin</h4></div></div>
+        </a>
+        <a class="project-card reveal" data-lightbox="https://images.unsplash.com/photo-1572297870735-9b6c4e0e3e6e?auto=format&fit=crop&w=1600&q=80">
+          <img src="https://images.unsplash.com/photo-1572297870735-9b6c4e0e3e6e?auto=format&fit=crop&w=900&q=80" alt="Élagage d'un arbre">
+          <div class="overlay"><div><span>Espaces verts</span><h4>Élagage et coupe d'arbre</h4></div></div>
+        </a>
+        <a class="project-card reveal" data-lightbox="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1600&q=80">
+          <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=900&q=80" alt="Nettoyage intérieur après chantier">
+          <div class="overlay"><div><span>Nettoyage</span><h4>Nettoyage de fin de chantier</h4></div></div>
+        </a>
+        <a class="project-card reveal" data-lightbox="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=1600&q=80">
+          <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=900&q=80" alt="Débarras d'encombrants dans une maison">
+          <div class="overlay"><div><span>Débarras</span><h4>Vide-maison complet</h4></div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta-banner reveal">
+        <div><h2>Votre prochain chantier ?</h2><p>Décrivez-nous votre projet — nous revenons vers vous en quelques minutes.</p></div>
+        <div class="actions">
+          <a href="/contact" class="btn btn-primary btn-lg"><i class="fa-solid fa-envelope"></i> Devis gratuit</a>
+          <a href="tel:+33619696812" class="btn btn-ghost btn-lg"><i class="fa-solid fa-phone"></i> 06 19 69 68 12</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,109 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  hasHero?: boolean;
+}
+
+const { title, description, canonical, hasHero = false } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8" />
+  <script is:inline>
+    /* Anti-FOUC : applique le thème sauvegardé avant le rendu */
+    (function () {
+      try {
+        var t = localStorage.getItem('rs-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="keywords" content="multi-services Toulouse, bricolage Toulouse, jardinier Pechbonnieu, débroussaillage Toulouse, nettoyage chantier Toulouse, débarras maison Toulouse, taille de haie 31, entretien jardin Haute-Garonne, encombrants Toulouse, paysagiste Pechbonnieu, déménagement Toulouse, RS Multi-Services, Raymond Spire">
+  <meta name="author" content="Raymond Spire — RS Multi-Services">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="language" content="fr-FR">
+  <meta name="theme-color" content="#1f6b39">
+  {canonical && <link rel="canonical" href={canonical}>}
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content="https://rsmultiservices.fr/assets/og-image.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content={canonical || "https://rsmultiservices.fr/"}>
+  <meta property="og:site_name" content="RS Multi-Services">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content="https://rsmultiservices.fr/assets/og-image.jpg">
+
+  <!-- GEO local SEO -->
+  <meta name="geo.region" content="FR-31">
+  <meta name="geo.placename" content="Pechbonnieu, Toulouse, Haute-Garonne">
+  <meta name="geo.position" content="43.7077;1.4628">
+  <meta name="ICBM" content="43.7077, 1.4628">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/logors.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css?v=3">
+  <link rel="stylesheet" href="/css/components.css?v=3">
+  <link rel="stylesheet" href="/css/pages.css?v=3">
+  <link rel="stylesheet" href="/css/enhancements.css?v=3">
+
+  <slot name="head" />
+</head>
+<body class={hasHero ? "has-hero" : ""}>
+
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<Header />
+
+<main>
+  <slot />
+</main>
+
+<Footer />
+
+<a href="tel:+33619696812" class="float-call" aria-label="Appeler RS Multi-Services">
+  <i class="fa-solid fa-phone"></i>
+</a>
+
+<!-- Cookie banner (RGPD) -->
+<aside class="cookie-banner" role="dialog" aria-live="polite" aria-label="Consentement cookies">
+  <h4><i class="fa-solid fa-cookie-bite"></i> Confidentialité & cookies</h4>
+  <p>Ce site n'utilise aucun cookie de suivi ni de publicité. Seules quelques préférences techniques sont conservées localement pour améliorer votre expérience. <a href="/politique-confidentialite">En savoir plus</a>.</p>
+  <div class="actions">
+    <button type="button" class="btn btn-primary" data-cookie-accept>J'ai compris</button>
+    <a href="/politique-confidentialite" class="btn btn-outline">Détails</a>
+  </div>
+</aside>
+
+<script is:inline src="/js/main.js"></script>
+<slot name="scripts" />
+</body>
+</html>

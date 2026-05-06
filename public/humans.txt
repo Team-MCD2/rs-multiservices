@@ -1,0 +1,15 @@
+/* TEAM */
+  Gérant : Raymond Spire
+  Contact : raymond.spire31@gmail.com
+  Téléphone : +33 6 19 69 68 12
+  Localisation : Pechbonnieu (31140), Haute-Garonne, France
+
+/* SITE */
+  Conception & développement : Microdidact — https://microdidact.com/
+  Standards : HTML5, CSS3, JavaScript ES6
+  Composants : Google Fonts (Bricolage Grotesque, Karla), Font Awesome 6
+  Photos : Unsplash (libre de droits)
+  Dernière mise à jour : 2026-05
+
+/* THANKS */
+  À tous les clients qui nous font confiance depuis 2023.

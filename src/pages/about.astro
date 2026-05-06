@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="À propos — RS Multi-Services Toulouse | Raymond Spire, artisan multi-services"
+  description="Découvrez RS Multi-Services, l'entreprise multi-services de Raymond Spire à Pechbonnieu. Bricolage, jardinage, nettoyage et débarras à Toulouse depuis 2023, 4,1/5 sur Allovoisins."
+  canonical="https://rsmultiservices.fr/about"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://rsmultiservices.fr/" },
+        { "@type": "ListItem", "position": 2, "name": "À propos", "item": "https://rsmultiservices.fr/about" }
+      ]
+    }
+    </script>
+  </Fragment>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>À propos de RS Multi-Services</h1>
+      <p>Un artisan, une promesse : faire le travail bien, dans la bonne humeur, partout autour de Toulouse.</p>
+      <nav class="breadcrumbs" aria-label="Fil d'ariane"><a href="/">Accueil</a><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i><span>À propos</span></nav>
+    </div>
+  </section>
+
+  <section>
+    <div class="container two-cols">
+      <div class="reveal">
+        <span class="section-eyebrow">Notre histoire</span>
+        <h2>Un savoir-faire au service de votre quotidien</h2>
+        <p>Fondée en novembre 2023 par <strong>Raymond Spire</strong>, RS Multi-Services est née d'une conviction simple : trouver un artisan polyvalent, réactif et de confiance ne devrait pas être un parcours du combattant.</p>
+        <p>Depuis, nous accompagnons les habitants de Toulouse et son agglomération sur tous les petits et grands tracas du quotidien : un robinet à changer, un jardin à remettre en état, une cave à vider, un chantier à nettoyer ? Une solution, un seul interlocuteur.</p>
+        <p><em>« Si vous avez un problème, j'ai la solution. Je peux remettre en état votre intérieur comme votre extérieur. »</em></p>
+        <a href="/contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Discutons de votre projet</a>
+      </div>
+      <div class="reveal">
+        <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&w=900&q=80" alt="Artisan multi-services au travail">
+      </div>
+    </div>
+  </section>
+
+  <section class="engagement">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-eyebrow">Nos valeurs</span>
+        <h2 class="section-title mx-auto">Ce qui guide chacune de nos interventions</h2>
+      </div>
+      <div class="engagement-grid">
+        <div class="feature-card reveal"><div class="feature-icon"><i class="fa-solid fa-handshake"></i></div><h4>Confiance</h4><p>Devis clair, parole tenue, travail soigné. Une relation simple et durable avec nos clients.</p></div>
+        <div class="feature-card reveal accent-blue"><div class="feature-icon"><i class="fa-solid fa-bolt"></i></div><h4>Réactivité</h4><p>Réponse en moins de 7 minutes en moyenne. Disponible 7j/7, weekends inclus.</p></div>
+        <div class="feature-card reveal accent-orange"><div class="feature-icon"><i class="fa-solid fa-tools"></i></div><h4>Polyvalence</h4><p>Une vaste palette de services pour répondre à tous vos besoins, du petit bricolage au gros chantier.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon"><i class="fa-solid fa-seedling"></i></div><h4>Soin</h4><p>Le détail compte. Chaque chantier est rendu propre, comme s'il était chez nous.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-eyebrow">Zone d'intervention</span>
+        <h2 class="section-title mx-auto">Toulouse et 50 km autour</h2>
+        <p class="section-lead mx-auto">Nous nous déplaçons gratuitement dans toute l'agglomération toulousaine et au-delà.</p>
+      </div>
+      <div class="text-center reveal">
+        <div class="areas" style="justify-content:center;">
+          <span>Toulouse</span><span>Pechbonnieu</span><span>L'Union</span><span>Saint-Loup-Cammas</span>
+          <span>Castelmaurou</span><span>Montberon</span><span>Rouffiac-Tolosan</span><span>Saint-Geniès-Bellevue</span>
+          <span>Launaguet</span><span>Aucamville</span><span>Fenouillet</span><span>Castelginest</span><span>Bruguières</span>
+          <span>Saint-Jean</span><span>Balma</span><span>Quint-Fonsegrives</span><span>Beaupuy</span>
+        </div>
+      </div>
+
+      <div class="stats-grid reveal">
+        <div class="stat"><div class="num">329+</div><div class="label">Mises en relation</div></div>
+        <div class="stat"><div class="num">4,1<span style="font-size:1.4rem">/5</span></div><div class="label">Note Allovoisins</div></div>
+        <div class="stat"><div class="num">7 min</div><div class="label">Délai de réponse</div></div>
+        <div class="stat"><div class="num">7j/7</div><div class="label">Disponibilité</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--rs-cream);">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-eyebrow">Informations légales</span>
+        <h2 class="section-title mx-auto">Une entreprise déclarée et vérifiée</h2>
+      </div>
+      <div class="engagement-grid">
+        <div class="feature-card reveal accent-blue"><div class="feature-icon"><i class="fa-solid fa-id-card"></i></div><h4>Auto-Entrepreneur</h4><p>Statut indépendant déclaré.<br><strong>SIRET 911 195 402 00019</strong></p></div>
+        <div class="feature-card reveal"><div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div><h4>Identité vérifiée</h4><p>Pièce d'identité, téléphone et entreprise vérifiés sur Allovoisins.</p></div>
+        <div class="feature-card reveal accent-orange"><div class="feature-icon"><i class="fa-solid fa-calendar-day"></i></div><h4>Depuis novembre 2023</h4><p>Au service des Toulousains avec plus de 329 missions à ce jour.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta-banner reveal">
+        <div><h2>Une question, un devis ?</h2><p>Parlez-nous de votre besoin, on s'occupe du reste.</p></div>
+        <div class="actions">
+          <a href="/contact" class="btn btn-primary btn-lg"><i class="fa-solid fa-envelope"></i> Devis gratuit</a>
+          <a href="tel:+33619696812" class="btn btn-ghost btn-lg"><i class="fa-solid fa-phone"></i> 06 19 69 68 12</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
