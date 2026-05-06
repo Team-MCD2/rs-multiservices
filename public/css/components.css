@@ -672,3 +672,43 @@
   font-size: 1.3rem;
   cursor: pointer;
 }
+
+/* Areas Grid (SEO) */
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.areas-grid a {
+  display: block;
+  padding: 0.75rem 1rem;
+  background: var(--rs-white);
+  border: 1px solid var(--rs-border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-weight: 600;
+  color: var(--rs-green-800);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.areas-grid a:hover {
+  background: var(--rs-green-50);
+  border-color: var(--rs-green-300);
+  color: var(--rs-green-900);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme='dark'] .areas-grid a {
+  background: var(--rs-bg-card);
+  border-color: var(--rs-border);
+  color: var(--rs-white);
+}
+
+[data-theme='dark'] .areas-grid a:hover {
+  background: var(--rs-green-900);
+  border-color: var(--rs-green-700);
+}

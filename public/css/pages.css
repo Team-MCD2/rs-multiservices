@@ -185,9 +185,11 @@
 
 /* ---------------- Page header (inner pages) ---------------- */
 .page-header {
-  background: var(--rs-gradient-hero);
+  background-color: var(--rs-green-900);
+  background-size: cover;
+  background-position: center;
   color: var(--rs-white);
-  padding: 90px 0 70px;
+  padding: 100px 0 80px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -197,7 +199,8 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(243,146,0,0.25), transparent 60%);
+  background: linear-gradient(135deg, rgba(20, 61, 36, 0.8) 0%, rgba(30, 156, 215, 0.8) 100%);
+  z-index: 1;
 }
 
 .page-header .container { position: relative; z-index: 2; }
@@ -219,13 +222,13 @@
   gap: 8px;
   align-items: center;
   font-size: 0.9rem;
-  color: var(--rs-orange-300);
+  color: var(--rs-blue-300);
   margin-top: 16px;
   font-family: var(--font-display);
 }
 
 .breadcrumbs a { color: rgba(255,255,255,0.85); }
-.breadcrumbs a:hover { color: var(--rs-orange-300); }
+.breadcrumbs a:hover { color: var(--rs-blue-300); }
 
 /* ---------------- About / two columns ---------------- */
 .two-cols {
