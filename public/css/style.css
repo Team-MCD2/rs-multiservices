@@ -184,6 +184,12 @@ section {
   padding: 90px 0;
 }
 
+@media (max-width: 768px) {
+  section {
+    padding: 50px 0;
+  }
+}
+
 .section-eyebrow {
   display: inline-block;
   font-family: var(--font-display);
