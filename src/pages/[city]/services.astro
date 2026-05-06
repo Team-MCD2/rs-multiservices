@@ -1,0 +1,16 @@
+---
+import { cities } from '../../data/cities';
+import ServicesTemplate from '../../layouts/templates/ServicesTemplate.astro';
+
+export function getStaticPaths() {
+  return cities.map(city => ({
+    params: { city: city.slug },
+    props: { name: city.name }
+  }));
+}
+
+const { city } = Astro.params;
+const { name } = Astro.props;
+---
+
+<ServicesTemplate cityName={name} citySlug={city} />

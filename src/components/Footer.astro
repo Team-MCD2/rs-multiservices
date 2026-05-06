@@ -1,10 +1,24 @@
 ---
+import { cities } from '../data/cities';
+
+const { pathname } = Astro.url;
+const segments = pathname.split('/').filter(Boolean);
+const potentialCity = segments[0];
+const isCityPath = cities.some(c => c.slug === potentialCity);
+const currentCitySlug = isCityPath ? potentialCity : '';
+
+const getLink = (path: string) => {
+  if (!currentCitySlug) return path;
+  if (path === '/') return `/${currentCitySlug}`;
+  const finalPath = path === '/projects' ? '/realisations' : path;
+  return `/${currentCitySlug}${finalPath}`;
+};
 ---
 
 <footer class="site-footer footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <a href="/" class="brand">
+      <a href={getLink("/")} class="brand">
         <img src="/logors.png" alt="Logo R&S Multi-Services" style="height:54px; border-radius:8px;">
         <span class="brand-text">
           <strong>RS Multi-Services</strong>
@@ -16,11 +30,11 @@
     <div>
       <h4>Liens rapides</h4>
       <ul>
-        <li><a href="/">Accueil</a></li>
-        <li><a href="/about">À propos</a></li>
-        <li><a href="/services">Services</a></li>
-        <li><a href="/projects">Réalisations</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href={getLink("/")}>Accueil</a></li>
+        <li><a href={getLink("/about")}>À propos</a></li>
+        <li><a href={getLink("/services")}>Services</a></li>
+        <li><a href={getLink("/realisations")}>Réalisations</a></li>
+        <li><a href={getLink("/contact")}>Contact</a></li>
         <li><a href="/mentions-legales">Mentions légales</a></li>
         <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
       </ul>

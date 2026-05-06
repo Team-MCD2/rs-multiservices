@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../BaseLayout.astro';
+
+interface Props {
+  cityName?: string;
+  citySlug?: string;
+}
+
+const { cityName = "{displayCity}", citySlug = "" } = Astro.props;
+const displayCity = cityName;
+const canonicalUrl = citySlug ? `{canonicalUrl}${citySlug}/contact` : "{canonicalUrl}contact";
+---
+
+<BaseLayout
+  title={`Contact & Devis gratuit — RS Multi-Services ${displayCity} | 06 19 69 68 12`}
+  description={`Contactez RS Multi-Services à ${displayCity} pour un devis gratuit : bricolage, jardinage, nettoyage, débarras. Disponible 7j/7 de 8h à 19h. ☎ 06 19 69 68 12.`}
+  canonical={canonicalUrl}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "{canonicalUrl}" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "{canonicalUrl}contact" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact RS Multi-Services",
+      "url": "{canonicalUrl}contact",
+      "mainEntity": {
+        "@type": "LocalBusiness",
+        "name": "RS Multi-Services",
+        "telephone": "+33619696812",
+        "email": "raymond.spire31@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Pechbonnieu",
+          "postalCode": "31140",
+          "addressCountry": "FR"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "08:00",
+          "closes": "19:00"
+        }
+      }
+    }
+    </script>
+  </Fragment>
+
+  <section class="page-header" style="background-image: url('/assets/bg-multiservice.png');">
+    <div class="container">
+      <h1>Contact & devis gratuit</h1>
+      <p>Une question, un projet, une urgence ? Nous vous répondons en moins de 7 minutes en moyenne.</p>
+      <nav class="breadcrumbs" aria-label="Fil d'ariane"><a href="/">Accueil</a><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i><span>Contact</span></nav>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <h2>Parlez-nous de votre projet</h2>
+          <p style="color:var(--rs-muted);">Plus votre demande est détaillée, plus notre devis sera précis. Indiquez la nature du service, l'adresse approximative et la disponibilité souhaitée.</p>
+
+          <form id="contact-form" novalidate>
+            <div class="form-msg" role="alert"></div>
+            <div class="form-grid">
+              <div class="form-row">
+                <label for="name">Nom complet *</label>
+                <input id="name" name="name" type="text" required autocomplete="name" placeholder="Jean Dupont">
+              </div>
+              <div class="form-row">
+                <label for="email">Email *</label>
+                <input id="email" name="email" type="email" required autocomplete="email" placeholder="vous@exemple.fr">
+              </div>
+              <div class="form-row">
+                <label for="phone">Téléphone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="06 12 34 56 78">
+              </div>
+              <div class="form-row">
+                <label for="city">Ville d'intervention</label>
+                <input id="city" name="city" type="text" placeholder="{displayCity}, Pechbonnieu…">
+              </div>
+              <div class="form-row full">
+                <label for="service">Service souhaité *</label>
+                <select id="service" name="service" required>
+                  <option value="">Choisir un service…</option>
+                  <option value="Petit bricolage">Petit bricolage</option>
+                  <option value="Entretien espace vert">Entretien d'espace vert</option>
+                  <option value="Nettoyage">Nettoyage intérieur / extérieur</option>
+                  <option value="Encombrants">Enlèvement d'encombrants</option>
+                  <option value="Déménagement">Aide au déménagement</option>
+                  <option value="Autre">Autre / multi-services</option>
+                </select>
+              </div>
+              <div class="form-row full">
+                <label for="message">Décrivez votre besoin *</label>
+                <textarea id="message" name="message" required placeholder="Ex. : tonte de 200 m², taille de 4 haies, à Pechbonnieu, idéalement samedi prochain…"></textarea>
+              </div>
+              <div class="form-row full">
+                <button type="submit" class="btn btn-primary btn-lg" style="width:100%; justify-content:center;">
+                  <i class="fa-solid fa-paper-plane"></i> Envoyer ma demande
+                </button>
+                <small style="color:var(--rs-muted); margin-top:8px;">En cliquant, votre demande nous est envoyée directement par email. Réponse en moins de 7 minutes en moyenne.</small>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <aside class="contact-info reveal">
+          <h3>Joignez-nous directement</h3>
+          <p style="color:var(--rs-muted);">Le moyen le plus rapide pour un devis : un appel ou un message.</p>
+          <ul>
+            <li>
+              <span class="icon"><i class="fa-solid fa-phone"></i></span>
+              <div><strong>Téléphone</strong><a href="tel:+33619696812">06 19 69 68 12</a><br><span>Réponse sous 7 minutes en moyenne</span></div>
+            </li>
+            <li>
+              <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+              <div><strong>Email</strong><a href="mailto:raymond.spire31@gmail.com">raymond.spire31@gmail.com</a></div>
+            </li>
+            <li>
+              <span class="icon"><i class="fa-solid fa-location-dot"></i></span>
+              <div><strong>Zone d'intervention</strong><span>Pechbonnieu (31140)<br>{displayCity} et 50 km autour</span></div>
+            </li>
+            <li>
+              <span class="icon"><i class="fa-solid fa-clock"></i></span>
+              <div><strong>Horaires</strong><span>7j/7 — du lundi au dimanche<br>de 8h00 à 19h00</span></div>
+            </li>
+            <li>
+              <span class="icon"><i class="fa-solid fa-star"></i></span>
+              <div><strong>Avis clients</strong><a href="https://www.allovoisins.com/p/rsmultiservices-12" target="_blank" rel="noopener">4,1/5 sur 11 avis Allovoisins</a></div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="map-wrap reveal">
+        <iframe
+          title="Zone d'intervention RS Multi-Services autour de {displayCity}"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=0.85%2C43.25%2C2.05%2C44.10&amp;layer=mapnik&amp;marker=43.7077%2C1.4628"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <Fragment slot="scripts">
+    <!-- EmailJS SDK (envoi de formulaire sans backend) -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script is:inline>
+      /*
+      * Configuration EmailJS
+      * 1) Créez un compte gratuit sur https://www.emailjs.com/
+      * 2) Créez un "Service" (Gmail / Outlook / SMTP) puis récupérez son SERVICE_ID
+      * 3) Créez un "Email Template" avec les variables :
+      *      {{from_name}} {{from_email}} {{phone}} {{city}} {{service}} {{message}}
+      *    et récupérez son TEMPLATE_ID
+      * 4) Dans Account → General, copiez la PUBLIC KEY
+      * 5) Remplacez les 3 valeurs ci-dessous.
+      * Tant que les valeurs commencent par "VOTRE_", le formulaire bascule automatiquement
+      * sur l'envoi par mailto (ouverture du client mail).
+      */
+      window.EMAILJS_CONFIG = {
+        publicKey:  'yzeIgjoTyOFY11L00',
+        serviceId:  'service_7gsbmbm',
+        templateId: 'template_doaui0r'
+      };
+      if (window.emailjs && window.EMAILJS_CONFIG.publicKey && !/^VOTRE_/.test(window.EMAILJS_CONFIG.publicKey)) {
+        emailjs.init({ publicKey: window.EMAILJS_CONFIG.publicKey });
+      }
+    </script>
+  </Fragment>
+</BaseLayout>

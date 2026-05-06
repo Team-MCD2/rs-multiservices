@@ -1,11 +1,20 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../BaseLayout.astro';
+
+interface Props {
+  cityName?: string;
+  citySlug?: string;
+}
+
+const { cityName = "{displayCity}", citySlug = "" } = Astro.props;
+const displayCity = cityName;
+const canonicalUrl = citySlug ? `{canonicalUrl}${citySlug}/services` : "{canonicalUrl}services";
 ---
 
 <BaseLayout
-  title="Nos services — Bricolage, Jardinage, Nettoyage, Débarras | RS Multi-Services Toulouse"
-  description="Découvrez tous les services RS Multi-Services à Toulouse : petit bricolage, tonte, taille, élagage, nettoyage maison/bureau/chantier, vide-maison, débarras, déménagement. Devis gratuit 7j/7."
-  canonical="https://rsmultiservices.fr/services"
+  title={`Nos services — Bricolage, Jardinage, Nettoyage, Débarras | RS Multi-Services ${displayCity}`}
+  description={`Découvrez tous les services RS Multi-Services à ${displayCity} : petit bricolage, tonte, taille, élagage, nettoyage maison/bureau/chantier, vide-maison, débarras. Devis gratuit 7j/7.`}
+  canonical={canonicalUrl}
 >
   <Fragment slot="head">
     <script type="application/ld+json">
@@ -13,8 +22,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://rsmultiservices.fr/" },
-        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://rsmultiservices.fr/services" }
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "{canonicalUrl}" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "{canonicalUrl}services" }
       ]
     }
     </script>
@@ -22,7 +31,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <section class="page-header" style="background-image: url('/assets/bg-garden.png');">
     <div class="container">
-      <h1>Nos services multi-services à Toulouse</h1>
+      <h1>Nos services multi-services à {displayCity}</h1>
       <p>Une seule équipe, tous vos besoins : bricolage, espaces verts, nettoyage et débarras.</p>
       <nav class="breadcrumbs" aria-label="Fil d'ariane"><a href="/">Accueil</a><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i><span>Services</span></nav>
     </div>
@@ -71,7 +80,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </ul>
           <a href="/contact?service=jardinage" class="btn btn-primary"><i class="fa-solid fa-leaf"></i> Demander un devis</a>
         </div>
-        <img src="/assets/service-jardinage.png" alt="Entretien d'espace vert à Toulouse">
+        <img src="/assets/service-jardinage.png" alt="Entretien d'espace vert à {displayCity}">
       </div>
     </div>
   </section>
@@ -118,46 +127,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <a href="/contact?service=encombrants" class="btn btn-primary"><i class="fa-solid fa-truck-arrow-right"></i> Demander un devis</a>
         </div>
         <img src="/assets/service-encombrants.png" alt="Enlèvement d'encombrants et débarras">
-      </div>
-    </div>
-  </section>
-
-  <!-- Secteurs d'intervention (SEO) -->
-  <section style="background: var(--rs-cream);">
-    <div class="container">
-      <div class="text-center reveal">
-        <span class="section-eyebrow">Localités</span>
-        <h2 class="section-title mx-auto">Où intervenons-nous ?</h2>
-        <p class="section-lead mx-auto">RS Multi-Services se déplace à Toulouse et dans toutes les communes environnantes (jusqu'à 50 km).</p>
-      </div>
-      <div class="areas-grid reveal">
-        <a href="/services/toulouse">Toulouse</a>
-        <a href="/services/colomiers">Colomiers</a>
-        <a href="/services/tournefeuille">Tournefeuille</a>
-        <a href="/services/blagnac">Blagnac</a>
-        <a href="/services/muret">Muret</a>
-        <a href="/services/plaisance-du-touch">Plaisance-du-Touch</a>
-        <a href="/services/cugnaux">Cugnaux</a>
-        <a href="/services/balma">Balma</a>
-        <a href="/services/l-union">L'Union</a>
-        <a href="/services/saint-orens-de-gameville">St-Orens-de-Gameville</a>
-        <a href="/services/ramonville-saint-agne">Ramonville-St-Agne</a>
-        <a href="/services/castanet-tolosan">Castanet-Tolosan</a>
-        <a href="/services/portet-sur-garonne">Portet-sur-Garonne</a>
-        <a href="/services/revel">Revel</a>
-        <a href="/services/villefranche-de-lauragais">Villefranche-de-Lauragais</a>
-        <a href="/services/grenade">Grenade</a>
-        <a href="/services/saint-jory">Saint-Jory</a>
-        <a href="/services/pechbonnieu">Pechbonnieu</a>
-        <a href="/services/aucamville">Aucamville</a>
-        <a href="/services/castelginest">Castelginest</a>
-        <a href="/services/fenouillet">Fenouillet</a>
-        <a href="/services/saint-alban">Saint-Alban</a>
-        <a href="/services/launaguet">Launaguet</a>
-        <a href="/services/gratentour">Gratentour</a>
-        <a href="/services/bruguieres">Bruguières</a>
-        <a href="/services/saint-jean">Saint-Jean</a>
-        <a href="/services/quint-fonsegrives">Quint-Fonsegrives</a>
       </div>
     </div>
   </section>
