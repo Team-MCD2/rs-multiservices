@@ -47,6 +47,42 @@ const { city } = Astro.params;
   description={`RS Multi-Services intervient à ${name} et ses alentours pour tous vos besoins en petit bricolage, entretien d'espaces verts, nettoyage et débarras. Devis gratuit sous 7 min.`}
   canonical={`https://rsmultiservices.fr/services/${city}`}
 >
+  <Fragment slot="head">
+    <!-- SEO local dynamique pour les IA -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": `RS Multi-Services ${name}`,
+      "description": `Services de bricolage, jardinage et nettoyage à domicile à ${name} et environs.`,
+      "url": `https://rsmultiservices.fr/services/${city}`,
+      "telephone": "+33619696812",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": name,
+        "addressRegion": "Occitanie",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.6047, // Coordonnées génériques Toulouse, l'IA comprendra la zone
+        "longitude": 1.4442
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": name
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": `Services à ${name}`,
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bricolage" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Jardinage" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Nettoyage" } }
+        ]
+      }
+    })} />
+  </Fragment>
+
   <section class="page-header" style="background-image: url('/assets/bg-multiservice.png');">
     <div class="container">
       <h1>Nos services multi-services à {name}</h1>

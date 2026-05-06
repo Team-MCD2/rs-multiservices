@@ -1,31 +1,4 @@
-# robots.txt for rsmultiservices.fr
 User-agent: *
 Allow: /
-Disallow: /js/
 
-# AI / LLM crawlers explicitly allowed (transparency & GEO SEO)
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Applebot
-Allow: /
-
-Sitemap: https://rsmultiservices.fr/sitemap.xml
+Sitemap: https://rsmultiservices.fr/sitemap-index.xml
