@@ -39,6 +39,7 @@
 .brand img {
   height: 50px;
   width: auto;
+  flex-shrink: 0;
 }
 
 .brand-text {
@@ -51,6 +52,7 @@
   font-size: 1.15rem;
   color: var(--rs-green-900);
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .brand-text span {
@@ -100,6 +102,7 @@
   display: flex;
   align-items: center;
   gap: 14px;
+  flex-shrink: 0;
 }
 
 .nav-tel {
@@ -149,6 +152,20 @@
     display: block;
     padding: 14px 0;
   }
+}
+
+@media (max-width: 640px) {
+  .nav { padding: 10px 0; gap: 12px; }
+  .brand img { height: 38px; }
+  .brand-text strong { font-size: 1rem; }
+  .brand-text span { display: none; }
+  .nav-actions { gap: 8px; }
+  .nav-actions .btn-primary { padding: 8px 14px; font-size: 0.85rem; }
+  .theme-toggle { width: 36px; height: 36px; font-size: 0.9rem; }
+}
+
+@media (max-width: 420px) {
+  .nav-actions .btn-primary { display: none; }
 }
 
 /* ---------------- Footer ---------------- */
