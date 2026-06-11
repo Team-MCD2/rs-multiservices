@@ -44,7 +44,7 @@ const { city, cityName } = Astro.props;
           <h2>Votre projet à {cityName}</h2>
           <p style="color:var(--rs-muted);">Indiquez la nature du service à {cityName} et vos disponibilités.</p>
 
-          <form id="contact-form" novalidate>
+          <form id="contact-form" data-api-form="rs" novalidate>
             <div class="form-msg" role="alert"></div>
             <div class="form-grid">
               <div class="form-row">
